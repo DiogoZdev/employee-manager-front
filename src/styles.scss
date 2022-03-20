@@ -1,1 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { 
+  min-height: 100vh;
+  min-width: 100vw; 
+  overflow-x: hidden;
+
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+::-webkit-scrollbar{
+  width: 8px;
+
+  &-track {
+    background: transparent;
+  }
+
+  &-thumb {
+    border-radius: 10px;
+    background: #aaa;
+    cursor: row-resize;
+  }
+
+}
+
+[form-field] {
+  display: flex;
+  flex-direction: column-reverse;
+  flex-grow: 0;
+  margin-bottom: 0.5rem;
+
+  input {
+    border-radius: 2px;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    padding: 0 1ch;
+    appearance: text;
+
+    &:focus {
+      border-bottom: solid 2px blue;
+    } 
+
+    &:invalid {
+      border-bottom: solid 2px red
+    }
+  }
+
+  label, input {
+    height: 30px;
+    max-width: 250px;
+  }
+
+  label {
+    pointer-events: none;
+    transition: all ease 0.3s;
+    padding: 0;
+  }
+
+  input + label {
+    transform: translateY(100%);
+    padding-left: 0.5rem;
+    line-height: 2.5;
+  }
+
+  input:not(:placeholder-shown) + label,
+  input:focus + label {
+    transform: translateY(0) scale(0.8);
+    transform-origin: left;
+    padding: 0;
+    line-height: 2.5;
+    color: blue;
+  }
+}
